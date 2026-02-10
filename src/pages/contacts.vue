@@ -17,34 +17,46 @@
         Email:
         <span class="page-contacts__text-italic"> idat@tusur.ru </span>
       </p>
+      <p class="page-contacts__text">
+        Контактное лицо:
+        <span class="page-contacts__text-italic">
+          {{ userStore.fullName }}
+        </span>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-  export default {};
+import { mapStores } from "pinia";
+import { useUserStore } from "@/store/user";
+export default {
+  computed: {
+    ...mapStores(useUserStore),
+  },
+};
 </script>
 
 <style lang="less">
-  .page-contacts {
-    &__container {
-      .container();
-    }
-
-    &__title {
-      margin: 0 0 15px;
-      color: @light_orange;
-    }
-
-    &__text {
-      margin-top: 5px;
-      font-weight: 700;
-    }
-
-    &__text-italic {
-      font-style: italic;
-      font-weight: 400;
-      margin-left: 5px;
-    }
+.page-contacts {
+  &__container {
+    .container();
   }
+
+  &__title {
+    margin: 0 0 15px;
+    color: @light_orange;
+  }
+
+  &__text {
+    margin-top: 5px;
+    font-weight: 700;
+  }
+
+  &__text-italic {
+    font-style: italic;
+    font-weight: 400;
+    margin-left: 5px;
+  }
+}
 </style>
